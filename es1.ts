@@ -18,7 +18,11 @@ const setupDb = () => {
           stock_count INT
       );
       `);
-  database.none(`REVOKE UPDATE ON books TO 'martin'@localhost`);
+  database.none(`
+  BEGIN TRANSACTION;
+  DELETE FROM books WHERE book_id=103
+  ROLLBACK
+  `);
 };
 
 setupDb();
