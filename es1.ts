@@ -19,16 +19,7 @@ const setupDb = () => {
       );
       `);
   database.none(
-    `INSERT INTO books VALUES ('1', 'A Journey to the Center','Jules Verne','Adventure','1864', '123456789','12.99','4','10','Verne Publishing','350')`
-  );
-  database.none(
-    `INSERT INTO books VALUES ('2', 'War And Peace','Lev Tolstoy','Historical','1869', '123456790','14.99','5','5','Tolstoy Prints','1200')`
-  );
-  database.none(
-    `INSERT INTO books VALUES ('3', 'Whispers of the Wind','Amelia Blackburn','Romance','1982', '123456791','9.99','4','20','BlackBourn House','275')`
-  );
-  database.none(
-    `INSERT INTO books VALUES ('4', 'The Galactic Odyssey','Orion Starfield','Science Fiction','2005', '123456792','19.99','5','15','Nebula Press','450')`
+    `UPDATE books set price='11.99', stock_count='4' WHERE book_id=2`
   );
 };
 
