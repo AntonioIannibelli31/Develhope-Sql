@@ -18,7 +18,7 @@ const setupDb = () => {
           stock_count INT
       );
       `);
-  database.none(`GRANT UPDATE, SELECT ON books TO 'martin'@localhost`);
+  database.none(`REVOKE UPDATE ON books TO 'martin'@localhost`);
 };
 
 setupDb();
