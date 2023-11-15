@@ -6,7 +6,7 @@ const database = pgPromise()(
 
 const setupDb = () => {
   database.none(`
-      CREATE TABLE books (
+      CREATE TABLE IF NOT EXISTS books (
           book_id INTEGER PRIMARY KEY,
           title TEXT NOT NULL,
           author TEXT NOT NULL,
@@ -16,7 +16,11 @@ const setupDb = () => {
           price FLOAT,
           rating INT,
           stock_count INT
-      )
+      );
+    ALTER TABLE books
+    ADD COLUMN publisher TEXT NOT NULL;
+    ALTER TABLE books  
+    ADD COLUMN number_of_pages INTEGER 
       `);
 };
 
