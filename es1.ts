@@ -18,9 +18,7 @@ const setupDb = () => {
           stock_count INT
       );
       `);
-  database.none(
-    `UPDATE books set price='11.99', stock_count='4' WHERE book_id=2`
-  );
+  database.none(`GRANT UPDATE, SELECT ON books TO 'martin'@localhost`);
 };
 
 setupDb();
