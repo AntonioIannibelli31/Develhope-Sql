@@ -6,22 +6,26 @@ const database = pgPromise()(
 
 const setupDb = () => {
   database.none(`
-      CREATE TABLE IF NOT EXISTS books (
-          book_id INTEGER PRIMARY KEY,
-          title TEXT NOT NULL,
-          author TEXT NOT NULL,
-          genre TEXT NOT NULL,
-          published_year INT,
-          isbn INT,
-          price FLOAT,
-          rating INT,
-          stock_count INT
-      );
-      `);
+  SELECT * FROM titanic WHERE genre=female
+    AND age>30
+    AND survived=1
+  `);
   database.none(`
-  BEGIN TRANSACTION;
-  DELETE FROM books WHERE book_id=103
-  ROLLBACK
+  SELECT AVG(age) FROM titanic WHERE sex=male 
+    AND survived=0
+  `);
+  database.none(`
+  SELECT * FROM titanic WHERE embarked=C
+    AND fare >=20
+    AND fare<=50
+  `);
+  database.none(`
+  SELECT COUNT(*) FROM titanic WHERE pClass=1
+    AND survived=1
+  `);
+  database.none(`
+  SELECT * FROM titanic WHERE embarked=C
+    AND fare>75
   `);
 };
 
